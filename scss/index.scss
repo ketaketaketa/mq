@@ -1,0 +1,22 @@
+@use 'mq';
+
+.hoge {
+ // 数値指定
+ @include mq.set('1000px') {
+  width: 90%;
+ }
+ // タブレット
+ @include mq.set('tablet') {
+  position: relative;
+ }
+ //
+ @include mq.set('sumahoTateYoko') {
+  background-color: #f00;
+ }
+ @include mq.set('sumahoYoko') {
+  display: block;
+ }
+ @include mq.set('sumaho') {
+  font-size: 1rem;
+ }
+}

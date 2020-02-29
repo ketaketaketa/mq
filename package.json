@@ -1,0 +1,15 @@
+{
+ "name": "mq",
+ "version": "1.0.0",
+ "scripts": {
+  "scss": "sass scss:css"
+ },
+ "repository": {
+  "type": "git",
+  "url": "git+https://github.com/ketaketaketa/mq.git"
+ },
+ "bugs": {
+  "url": "https://github.com/ketaketaketa/mq/issues"
+ },
+ "homepage": "https://github.com/ketaketaketa/mq#readme"
+}

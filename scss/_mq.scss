@@ -1,0 +1,72 @@
+// メディアクエリ設定用モジュール
+// ブレイクポイント参考URL https://shizukanajikan.com/pdf/pdf_breakpoint2019.pdf
+//
+// 例)
+// @use 'mq';
+//
+// .hoge {
+//  // 数値指定
+//  @include mq.set(1000px) {
+//   width: 90%;
+//  }
+//  // タブレット
+//  @include mq.set(tablet) {
+//   position: relative;
+//  }
+//  //
+//  @include mq.set(sumahoTateYoko) {
+//   background-color: #f00;
+//  }
+//  @include mq.set(sumahoYoko) {
+//   display: block;
+//  }
+//  @include mq.set(sumaho) {
+//   font-size: 1rem;
+//  }
+// }
+
+@use 'sass:map';
+@use 'sass:string';
+
+// @mixin set 引数にメディアクエリで適用する幅を指定
+@mixin set($bp: null) {
+ $tablet: 960px; // タブレット 縦 ブレイクポイント
+ $sumaho: 560px; // スマホ 縦 ブレイクポイント
+ $sumahoyoko: (
+  'w': 960px,
+  'h': 418px
+ ); // スマホ 横 ブレイクポイント
+
+ @if ($bp == null or type-of($bp) == number) {
+  // 引数未設定、数値のみエラー表示
+  @debug 'set引数にメディアクエリに適用させる幅(単位を含めて)を指定してください。';
+  @debug '例) mq.set(500px)';
+ } @else {
+  @if ($bp == tablet) {
+   // タブレット
+   @media screen and (max-width: $tablet) {
+    @content;
+   }
+  } @else if($bp == sumaho) {
+   // スマホ
+   @media screen and (max-width: $sumaho) {
+    @content;
+   }
+  } @else if($bp == sumahoYoko) {
+   //スマホ横
+   @media screen and (max-width: map.get($sumahoyoko,w)) and (max-height: map.get($sumahoyoko,h)) {
+    @content;
+   }
+  } @else if($bp == sumahoTateYoko) {
+   // スマホ縦横
+   @media screen and (max-width: map.get($sumahoyoko,w)) and (max-height: map.get($sumahoyoko,h)), screen and (max-width: $sumaho) {
+    @content;
+   }
+  } @else {
+   // 数値指定
+   @media screen and (max-width: $bp) {
+    @content;
+   }
+  }
+ }
+}
