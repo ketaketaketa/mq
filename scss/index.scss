@@ -1,6 +1,11 @@
-@use 'mq';
+@use 'partial/mq';
+@use 'partial/arrow';
 
-.hoge {
+.arrow {
+ @include arrow.set();
+}
+
+.mq {
  // 数値指定
  @include mq.set('1000px') {
   width: 90%;

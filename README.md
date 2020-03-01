@@ -1,3 +1,13 @@
-# mq
+# scss-parts
 
-各デバイスメディアクエリ CSS 生成 SCSS ファイル
+SCSS パーツ集
+
+## scss\partial
+
+### \_mq.scss
+
+各デバイスメディアクエリ
+
+### \_arrow.scss
+
+矢印アイコン
